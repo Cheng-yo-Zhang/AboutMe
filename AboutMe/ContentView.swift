@@ -4,15 +4,19 @@
 //
 //  Created by Louis Chang on 2024/9/18.
 //
-
+// 使用SwiftUI
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        // 畫面上下捲動
         ScrollView {
             VStack(spacing: 20) {
+                // 使用Extract Subview
                 HeaderView()
                 ProfileView()
+                
+                // 使用property客製自訂的SwiftUI view
                 CompanyView(name: "Zip2", symbol: "zip2",
                             description: "1995年創立，是一家軟體公司，主要是為新聞提供線上的城市導航與指南資訊。1999年被Compaq收購。",
                             images: ["zip2_1"], companyLink: " ")
@@ -52,6 +56,8 @@ struct ContentView: View {
             }
             .padding()
         }
+        
+        // 隱藏滾動bar
         .scrollIndicators(.hidden)
     }
 }
@@ -143,6 +149,7 @@ struct CompanyView: View {
                 }
             }
             
+            // 可展開與收起
             if isExpanded {
                 Text(description)
                     .font(.body)
@@ -172,23 +179,6 @@ struct CompanyView: View {
                     }
                     .padding(.top)
                 }
-                
-                
-                
-                /*
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        ForEach(images, id: \.self) { imageName in
-                            Image(imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 150)
-                                .cornerRadius(10)
-                        }
-                    }
-                }
-                .padding(.top)
-                */
             }
         }
         .padding()
